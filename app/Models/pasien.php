@@ -18,3 +18,4 @@ class pasien extends Model
         ];
     }
 }
+// Savee eaa

@@ -26,3 +26,5 @@ class PasienController extends Controller
 
     }
 }
+
+// Savee eaa
