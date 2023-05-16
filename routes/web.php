@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PasienController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Route untuk menampilkan daftar Pasien
+Route::get('/pasien', [PasienController::class, 'index']);
+
+// Route untuk menampilkan form tambah pasien
+Route::get('/pasien/create', [PasienController::class, 'create']);
+
+// Route untuk memproses form tambah pasien
+Route::post('/pasien', [PasienController::class, 'store']);
