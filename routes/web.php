@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DokterController;
 use App\Http\Controllers\PasienController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Pasien Route
 // Route untuk menampilkan daftar Pasien
 Route::get('/pasien', [PasienController::class, 'index']);
 
@@ -28,4 +30,12 @@ Route::get('/pasien/create', [PasienController::class, 'create']);
 Route::post('/pasien', [PasienController::class, 'store']);
 
 
-// ppppppp
+// Dokter Route
+// Route untuk menampilkan daftar Dokter
+Route::get('/dokter', [DokterController::class, 'index']);
+
+// Route untuk menampilkan form tambah Dokter
+Route::get('/dokter/create', [DokterController::class, 'create']);
+
+// Route untuk memproses form tambah Dokter
+Route::post('/dokter', [DokterController::class, 'store']);

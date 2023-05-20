@@ -2,22 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\pasien;
+use App\Models\dokter;
 use Illuminate\Http\Request;
 
-class PasienController extends Controller
+class DokterController extends Controller
 {
+    //
     public function index()
     {
-        $pasiens = pasien::getAll();
-        return view('pasien.index', [
-            'pasiens' => $pasiens
+        $dokters = dokter::getAll();
+        return view('dokter.index', [
+            'dokters' => $dokters
         ]);
     }
 
     public function create()
     {
-        return view('pasien.create');
+        return view('dokter.create');
     }
 
     public function store(Request $request)
