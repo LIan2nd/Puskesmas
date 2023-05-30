@@ -28,10 +28,10 @@
                 @foreach ($dokters as $item)
                     <tr>
                         <td>{{ $iteration++ }}</td>
-                        <td>{{ $item['nama'] }}</td>
-                        <td>{{ $item['spesialis'] }}</td>
-                        <td>{{ $item['telp'] }}</td>
-                        <td>{{ $item['alamat'] }}</td>
+                        <td>{{ $item->nama }}</td>
+                        <td>{{ $item->spesialis }}</td>
+                        <td>{{ $item->tlp }}</td>
+                        <td>{{ $item->alamat }}</td>
                         <td>
                             <a href="#" class="btn btn-warning btn-sm">Edit</a>
                             <form action="#" method="POST" class="d-inline">
