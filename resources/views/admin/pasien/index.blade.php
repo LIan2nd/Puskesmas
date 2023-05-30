@@ -12,7 +12,7 @@
             </div>
         @endif
 
-        <table class="table table-bordered table-striped">
+        <table class="table table-bordered table-striped text-center">
             <thead>
                 <tr>
                     <th>No</th>
@@ -29,11 +29,17 @@
                 @foreach ($pasiens as $item)
                     <tr>
                         <td>{{ $iteration++ }}</td>
-                        <td>{{ $item['nama'] }}</td>
-                        <td>{{ $item['jk'] }}</td>
-                        <td>{{ $item['Tgl_lahir'] }}</td>
-                        <td>{{ $item['alamat'] }}</td>
-                        <td>{{ $item['telp'] }}</td>
+                        <td>{{ $item->nama }}</td>
+                        <td>
+                            @if ($item->jk == 'L')
+                                Laki-Laki
+                            @else
+                                Perempuan
+                            @endif
+                        </td>
+                        <td>{{ $item->tgl_lahir }}</td>
+                        <td>{{ $item->alamat }}</td>
+                        <td>{{ $item->tlp }}</td>
                         <td>
                             <a href="#" class="btn btn-warning btn-sm">Edit</a>
                             <form action="#" method="POST" class="d-inline">
