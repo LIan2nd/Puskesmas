@@ -24,6 +24,12 @@
                 <label for="nama">Nama</label>
                 <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama Dokter" value="">
             </div>
+            @if ($errors->any())
+                <div class="text-danger small">
+                    @foreach ($errors->all() as $message)
+                        {{ $message }}
+                </div>
+            @endif
 
             <div class="form-group mt-3">
                 <label for="spesialis">Spesialis</label>
