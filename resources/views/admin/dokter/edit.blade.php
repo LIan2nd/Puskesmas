@@ -1,7 +1,7 @@
 @extends('main')
 @section('content')
     <div class="container">
-        <h1 class="text-center">Tambah Dokter</h1>
+        <h1 class="text-center">Edit Dokter</h1>
         <br>
         <a href="/dokter" class="btn btn-primary">
             Back</a>
@@ -18,11 +18,13 @@
             </div>
         @endif
 
-        <form action="/dokter" method="post" class="mx-2">
+        <form action="/dokter/{{ $dokter->id }}" method="post" class="mx-2">
+            @method('put')
             <div class="form-group mt-3">
                 @csrf
                 <label for="nama">Nama</label>
-                <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama Dokter" value="">
+                <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama Dokter"
+                    value="{{ $dokter->nama }}">
             </div>
             @if ($errors->any())
                 <div class="text-danger small">
@@ -35,21 +37,23 @@
             <div class="form-group mt-3">
                 <label for="spesialis">Spesialis</label>
                 <select class="form-control" name="spesialis">
-                    <option value="Gigi">Spesialis Gigi</option>
-                    <option value="Mata">Spesialis Mata</option>
-                    <option value="Jantung">Spesialis Jantung</option>
-                    <option value="Jiwa">Spesialis Jiwa</option>
+                    <option value="Gigi" {{ $dokter->spesialis == 'Gigi' ? 'selected' : '' }}>Spesialis Gigi</option>
+                    <option value="Mata" {{ $dokter->spesialis == 'Mata' ? 'selected' : '' }}>Spesialis Mata</option>
+                    <option value="Jantung" {{ $dokter->spesialis == 'Jantung' ? 'selected' : '' }}>Spesialis Jantung
+                    </option>
+                    <option value="Jiwa" {{ $dokter->spesialis == 'Jiwa' ? 'selected' : '' }}>Spesialis Jiwa</option>
                 </select>
             </div>
 
 
             <div class="form-group mt-3">
                 <label for="tlp">No. Telp</label>
-                <input type="text" class="form-control" name="tlp" placeholder="Masukkan No. Telp" value="">
+                <input type="text" class="form-control" name="tlp" placeholder="Masukkan No. Telp"
+                    value="{{ $dokter->tlp }}">
             </div>
             <div class="form-group mt-3">
                 <label for="alamat">Alamat</label>
-                <textarea class="form-control" name="alamat"></textarea>
+                <textarea class="form-control" name="alamat">{{ $dokter->alamat }}</textarea>
             </div>
 
             <div class="form-group mt-3 d-flex justify-content-center">
