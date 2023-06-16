@@ -14,24 +14,24 @@
                 <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
             </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {{ $title == 'Dashboard' ? 'active' : '' }}">
             <a class="nav-link" href="/">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
             </a>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item {{ $title == 'Data Pasien' ? 'active' : '' }}">
             <a class="nav-link" href="/pasien">
                 <span class="menu-title">Pasien</span>
-                <i class="mdi mdi-home menu-icon"></i>
+                <i class="mdi mdi-account-alert menu-icon"></i>
             </a>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item {{ $title == 'Data Dokter' ? 'active' : '' }}">
             <a class="nav-link" href="/dokter">
                 <span class="menu-title">Dokter</span>
-                <i class="mdi mdi-home menu-icon"></i>
+                <i class="mdi mdi-account menu-icon"></i>
             </a>
         </li>
     </ul>

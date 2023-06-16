@@ -12,13 +12,16 @@ class DokterController extends Controller
     {
         $dokters = dokter::all();
         return view('admin.dokter.index', [
+            'title' => 'Data Dokter',
             'dokters' => $dokters
         ]);
     }
 
     public function create()
     {
-        return view('admin.dokter.create');
+        return view('admin.dokter.create', [
+            'title' => 'Tambah Data Dokter'
+        ]);
     }
 
     public function store(Request $request)
@@ -50,6 +53,7 @@ class DokterController extends Controller
         $dokter = Dokter::find($id);
 
         return view('admin.dokter.edit', [
+            'title' => 'Edit data Dokter',
             'dokter' => $dokter
         ]);
     }

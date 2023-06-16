@@ -13,13 +13,16 @@ class PasienController extends Controller
     {
         $pasiens = pasien::all();
         return view('admin.pasien.index', [
+            'title' => 'Data Pasien',
             'pasiens' => $pasiens
         ]);
     }
 
     public function create()
     {
-        return view('admin.pasien.create');
+        return view('admin.pasien.create', [
+            'title' => 'Tambah Data Pasien'
+        ]);
     }
     // Untuk menangani submit form tambah pasien
     public function store(Request $request)
@@ -53,6 +56,7 @@ class PasienController extends Controller
         $pasien = Pasien::find($id);
 
         return view('admin.pasien.edit', [
+            'title' => 'Edit Data Pasien',
             'pasien' => $pasien
         ]);
     }
