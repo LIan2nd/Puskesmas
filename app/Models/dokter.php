@@ -11,5 +11,10 @@ class dokter extends Model
 
     protected $table = 'dokters';
 
-    protected $fillable = ['nama', 'spesialis', 'tlp', 'alamat'];
+    protected $guarded = ['id'];
+
+    public function pasiens()
+    {
+        return $this->hasMany(pasien::class);
+    }
 }

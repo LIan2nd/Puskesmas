@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\dokter;
 use App\Models\pasien;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,8 @@ class PasienController extends Controller
     public function create()
     {
         return view('admin.pasien.create', [
-            'title' => 'Tambah Data Pasien'
+            'title' => 'Tambah Data Pasien',
+            'dokters' => Dokter::all()
         ]);
     }
     // Untuk menangani submit form tambah pasien
@@ -33,7 +35,8 @@ class PasienController extends Controller
             'jk' => 'required',
             'tgl_lahir' => 'required | date',
             'alamat' => 'required | max:500',
-            'tlp' => 'required | numeric | digits_between:10,14'
+            'tlp' => 'required | numeric | digits_between:10,14',
+            'nama_dokter' => 'required'
         ]);
 
         // Insert data ke table pasiens di database;
@@ -44,6 +47,7 @@ class PasienController extends Controller
             'tgl_lahir' => $request->tgl_lahir,
             'alamat' => $request->alamat,
             'tlp' => $request->tlp,
+            'dokter_id' => $request->nama_dokter
         ]);
 
         return redirect('/pasien');
@@ -53,11 +57,13 @@ class PasienController extends Controller
     public function edit($id)
     {
         // Mendapatkan pasien berdasarkan id
+        $dokters = dokter::all();
         $pasien = Pasien::find($id);
 
         return view('admin.pasien.edit', [
             'title' => 'Edit Data Pasien',
-            'pasien' => $pasien
+            'pasien' => $pasien,
+            'dokters' => $dokters
         ]);
     }
 

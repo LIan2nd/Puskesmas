@@ -51,6 +51,16 @@
                     value="{{ $pasien->tlp }}">
             </div>
 
+            <div class="form-group mt-3">
+                <label for="nama_dokter">Dokter</label>
+                <select class="form-control" name="nama_dokter">
+                    @foreach ($dokters as $dokter)
+                        <option value="{{ $dokter->nama }}" {{ $dokter->nama == $pasien->dokter->nama ? 'selected' : '' }}>
+                            {{ $dokter->nama }}</option>
+                    @endforeach
+                </select>
+            </div>
+
             <div class="form-group mt-3 d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary">Simpan</button>
             </div>

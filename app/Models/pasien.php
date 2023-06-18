@@ -13,5 +13,10 @@ class pasien extends Model
     protected $table = 'pasiens';
 
     // Menyebutkan field yang boleh diisi;
-    protected $fillable = ['nama', 'jk', 'tgl_lahir', 'alamat', 'tlp'];
+    protected $guarded = ['id'];
+
+    public function dokter()
+    {
+        return $this->belongsTo(dokter::class);
+    }
 }
