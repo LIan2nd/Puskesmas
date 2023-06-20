@@ -3,7 +3,9 @@
     <div class="container">
         <h1>Daftar Dokter</h1>
         <br>
-        <a href="/dokter/create" class="btn btn-primary">+ Tambah Dokter</a>
+        @if (Auth::user()->role == 'Admin')
+            <a href="/dokter/create" class="btn btn-primary">+ Tambah Dokter</a>
+        @endif
         <hr>
 
         @if (session('success'))
@@ -20,7 +22,9 @@
                     <th>Spesialis</th>
                     <th>No. Telp</th>
                     <th>Alamat</th>
-                    <th>Aksi</th>
+                    @if (Auth::user()->role == 'Admin')
+                        <th>Aksi</th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -32,16 +36,18 @@
                         <td>{{ $item->spesialis }}</td>
                         <td>{{ $item->tlp }}</td>
                         <td>{{ $item->alamat }}</td>
-                        <td>
-                            <a href="/dokter/edit/{{ $item->id }}" class="btn btn-warning btn-sm">Edit</a>
-                            <form action="/dokter" method="POST" class="d-inline">
-                                @csrf
-                                @method('delete')
-                                <input type="hidden" name="id" value="{{ $item->id }}">
-                                <button class="btn btn-danger btn-sm"
-                                    onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Hapus</button>
-                            </form>
-                        </td>
+                        @if (Auth::user()->role == 'Admin')
+                            <td>
+                                <a href="/dokter/edit/{{ $item->id }}" class="btn btn-warning btn-sm">Edit</a>
+                                <form action="/dokter" method="POST" class="d-inline">
+                                    @csrf
+                                    @method('delete')
+                                    <input type="hidden" name="id" value="{{ $item->id }}">
+                                    <button class="btn btn-danger btn-sm"
+                                        onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Hapus</button>
+                                </form>
+                            </td>
+                        @endif
                 @endforeach
             </tbody>
         </table>
