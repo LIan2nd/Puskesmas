@@ -50,7 +50,7 @@ class PasienController extends Controller
             'dokter_id' => $request->nama_dokter
         ]);
 
-        return redirect('/pasien');
+        return redirect('/pasien')->with('succes', 'Data Pasien Berhasil ditambahkan!');
 
     }
 

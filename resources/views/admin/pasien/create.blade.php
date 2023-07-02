@@ -7,7 +7,7 @@
             Back</a>
         <hr>
 
-        @if ($errors->any())
+        {{-- @if ($errors->any())
             <div class="alert alert-danger">
                 <strong>Whoops!</strong> Ada kesalahan input data! <br><br>
                 <ul>
@@ -16,13 +16,17 @@
                     @endforeach
                 </ul>
             </div>
-        @endif
+        @endif --}}
 
         <form action="/pasien" method="post" class="mx-2">
             <div class="form-group mt-3">
                 @csrf
                 <label for="nama">Nama</label>
-                <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama Pasien" value="">
+                <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama"
+                    placeholder="Masukkan Nama Pasien" value="{{ old('nama') }}">
+                @error('nama')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="form-group mt-3">
@@ -35,17 +39,29 @@
 
             <div class="form-group mt-3">
                 <label for="tgl_lahir">Tanggal Lahir</label>
-                <input type="date" class="form-control" name="tgl_lahir" value="">
+                <input type="date" class="form-control @error('tgl_lahir') is-invalid @enderror" name="tgl_lahir"
+                    value="{{ old('tgl_lahir') }}">
+                @error('nama')
+                    <div class="invalid-feedback">{{ $message }}
+                    </div>
+                @enderror
             </div>
 
             <div class="form-group mt-3">
                 <label for="alamat">Alamat</label>
-                <textarea class="form-control" name="alamat"></textarea>
+                <textarea class="form-control @error('alamat') is-invalid @enderror" name="alamat" value="{{ old('alamat') }}"></textarea>
+                @error('alamat')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="form-group mt-3">
                 <label for="tlp">No. Telp</label>
-                <input type="text" class="form-control" name="tlp" placeholder="Masukkan No. Telp" value="">
+                <input type="text" class="form-control @error('tlp') is-invalid @enderror" name="tlp"
+                    placeholder="Masukkan No. Telp" value="{{ old('tlp') }}">
+                @error('tlp')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="form-group mt-3">
